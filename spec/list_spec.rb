@@ -42,11 +42,27 @@ describe("List") do
     it("returns an array of tasks for that list") do
       test_list = List.new({:name => "Epicodus stuff", :id => nil})
       test_list.save()
-      test_task = Task.new({:description => "Learn SQL", :list_id => test_list.id()})
+      test_task = Task.new({:description => "Learn SQL", :list_id => test_list.id(), :due_date => "2008-11-11"})
       test_task.save()
-      test_task2 = Task.new({:description => "Review Ruby", :list_id => test_list.id()})
+      test_task2 = Task.new({:description => "Review Ruby", :list_id => test_list.id(), :due_date => "2008-11-11"})
       test_task2.save()
       expect(test_list.tasks(test_list.id())).to(eq([test_task, test_task2]))
+    end
+  end
+
+  describe("#sort") do
+    it("returns an array of tasks for that list") do
+      test_list = List.new({:name => "Epicodus stuff", :id => nil})
+      test_list.save()
+      test_task4 = Task.new({:description => "Learn SQL", :list_id => test_list.id(), :due_date => "2016-11-11"})
+      test_task4.save()
+      test_task2 = Task.new({:description => "Learn Javascript", :list_id => test_list.id(), :due_date => "2014-11-11"})
+      test_task2.save()
+      test_task1 = Task.new({:description => "Learn Ruby", :list_id => test_list.id(), :due_date => "2016-10-11"})
+      test_task1.save()
+      test_task3 = Task.new({:description => "Learn HTML", :list_id => test_list.id(), :due_date => "2014-11-01"})
+      test_task3.save()
+      expect(test_list.sort()).to(eq([test_task3, test_task2, test_task1, test_task4]))
     end
   end
 

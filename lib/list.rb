@@ -54,4 +54,17 @@ class List
     end
     found_tasks
   end
+
+
+  define_method(:sort) do
+    tasks = DB.exec("SELECT * FROM tasks ORDER BY due_date;")
+    ordered_tasks = []
+    tasks.each do |task|
+      description = task.fetch("description")
+      list_id = task.fetch("list_id").to_i()
+      due_date = task.fetch("due_date")
+      ordered_tasks.push(Task.new({:description => description, :list_id => list_id, :due_date => due_date}))
+    end
+    ordered_tasks
+  end
 end
