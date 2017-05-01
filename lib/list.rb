@@ -37,13 +37,21 @@ class List
   end
 
   define_method(:tasks) do |id|
-    returned_tasks = DB.exec("SELECT * FROM tasks WHERE list_id = #{id}")
-    tasks = []
-    returned_tasks.each() do |task|
-      description = task.fetch("description")
-      list_id = task.fetch("list_id").to_i
-      tasks.push(Task.new({:description => description, :list_id => list_id}))
+    # found_list
+    # returned_tasks = DB.exec("SELECT * FROM tasks WHERE list_id = #{id}")
+    # tasks = []
+    # returned_tasks.each() do |task|
+    #   description = task.fetch("description")
+    #   list_id = task.fetch("list_id").to_i
+    #   tasks.push(Task.new({:description => description, :list_id => list_id}))
+    # end
+    # tasks
+    found_tasks = []
+    Task.all().each() do |task|
+      if task.list_id().==(id)
+        found_tasks.push(task)
+      end
     end
-    tasks
+    found_tasks
   end
 end
