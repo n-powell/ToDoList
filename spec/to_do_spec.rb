@@ -5,6 +5,7 @@ describe(Task) do
     it("is the same task if it has the same description") do
       task1 = Task.new({:description => "learn SQL", :list_id => 1, :due_date => "2008-11-11"})
       task2 = Task.new({:description => "learn SQL", :list_id => 1, :due_date => "2008-11-11"})
+      expect(task1==task2).to(eq(true))
     end
   end
 

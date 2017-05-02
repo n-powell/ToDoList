@@ -18,3 +18,8 @@ to_do_test=# \d tasks
 
   to_do_test=# CREATE TABLE lists (name varchar);
   to_do_test=# ALTER TABLE lists ADD id int;
+
+to_do=# CREATE TABLE tasks (id serial PRIMARY KEY, description varchar);
+to_do=# ALTER TABLE tasks ADD list_id int;
+
+to_do=# CREATE TABLE doctors (id serial PRIMARY KEY, name varchar, specialty varchar);
