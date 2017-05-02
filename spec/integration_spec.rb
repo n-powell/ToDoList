@@ -37,11 +37,11 @@ end
 
 describe('adding tasks to a list', {:type => :feature}) do
   it('allows a user to add a task to a list') do
-    test_list = List.new({:name => 'School stuff'})
+    test_list = List.new({:name => 'School stuff', :id => 10})
     test_list.save()
     visit("/lists/#{test_list.id()}")
     fill_in("Description", {:with => "Learn SQL"})
     click_button("Add task")
-    expect(page).to have_content("Success")
+    expect(page).to have_content("Success!")
   end
 end

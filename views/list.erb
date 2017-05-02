@@ -5,7 +5,7 @@
 
   <ul>
     <% @list.tasks(@list.id()).each() do |task| %>
-      <li><%= task.description() %> </li>
+      <%= "<li>#{task.due_date()} #{task.description()}</li>" %>
     <% end %>
   </ul>
 
@@ -20,6 +20,9 @@
 
   <label for="description">Description of the task:</label>
   <input id="description" name="description" type="text">
+
+  <label for="due_date">Due date of the task:</label>
+  <input id="due_date" name="due_date" type="text">
 
   <button type="submit">Add task</button>
 </form>
