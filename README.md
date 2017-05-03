@@ -2,7 +2,7 @@ to_do_test=# \d tasks
             Table "public.tasks"
    Column    |       Type        | Modifiers
 -------------+-------------------+-----------
- due_date    | character varying |
+ due_date    | character varying | (change to variable type serial)
  description | character varying |
  list_id     | integer           |
 

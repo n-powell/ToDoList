@@ -9,6 +9,7 @@ require("pry")
 DB = PG.connect({:dbname => "to_do"})
 
 get("/") do
+  @lists = List.all()
   erb(:index)
 end
 
